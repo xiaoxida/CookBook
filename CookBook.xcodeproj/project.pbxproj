@@ -17,6 +17,11 @@
 		B8ECAD8E1FD24C230055B43A /* CookBookUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECAD8D1FD24C230055B43A /* CookBookUITests.m */; };
 		B8ECAD9F1FD24CBF0055B43A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8ECAD9D1FD24CBF0055B43A /* FBSDKLoginKit.framework */; };
 		B8ECADA01FD24CBF0055B43A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8ECAD9E1FD24CBF0055B43A /* FBSDKCoreKit.framework */; };
+		B8ECADAC1FD385710055B43A /* CBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADAB1FD385710055B43A /* CBTabBarController.m */; };
+		B8ECADAF1FD390140055B43A /* CBAddRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADAE1FD390140055B43A /* CBAddRecipeViewController.m */; };
+		B8ECADB21FD391540055B43A /* CBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADB11FD391540055B43A /* CBTableViewController.m */; };
+		B8ECADB71FD3978C0055B43A /* CBRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADB61FD3978C0055B43A /* CBRecipe.m */; };
+		B8ECADBA1FD397A00055B43A /* CBRecipeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADB91FD397A00055B43A /* CBRecipeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,16 @@
 		B8ECAD8F1FD24C230055B43A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8ECAD9D1FD24CBF0055B43A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		B8ECAD9E1FD24CBF0055B43A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		B8ECADAA1FD385710055B43A /* CBTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBTabBarController.h; sourceTree = "<group>"; };
+		B8ECADAB1FD385710055B43A /* CBTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBTabBarController.m; sourceTree = "<group>"; };
+		B8ECADAD1FD390140055B43A /* CBAddRecipeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBAddRecipeViewController.h; sourceTree = "<group>"; };
+		B8ECADAE1FD390140055B43A /* CBAddRecipeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBAddRecipeViewController.m; sourceTree = "<group>"; };
+		B8ECADB01FD391540055B43A /* CBTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBTableViewController.h; sourceTree = "<group>"; };
+		B8ECADB11FD391540055B43A /* CBTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBTableViewController.m; sourceTree = "<group>"; };
+		B8ECADB51FD3978C0055B43A /* CBRecipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBRecipe.h; sourceTree = "<group>"; };
+		B8ECADB61FD3978C0055B43A /* CBRecipe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBRecipe.m; sourceTree = "<group>"; };
+		B8ECADB81FD397A00055B43A /* CBRecipeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBRecipeModel.h; sourceTree = "<group>"; };
+		B8ECADB91FD397A00055B43A /* CBRecipeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBRecipeModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +124,8 @@
 			children = (
 				B8ECAD691FD24C220055B43A /* AppDelegate.h */,
 				B8ECAD6A1FD24C220055B43A /* AppDelegate.m */,
-				B8ECAD6C1FD24C220055B43A /* CBLoginViewController.h */,
-				B8ECAD6D1FD24C220055B43A /* CBLoginViewController.m */,
+				B8ECADB41FD3974E0055B43A /* Model */,
+				B8ECADB31FD393150055B43A /* ViewController */,
 				B8ECAD6F1FD24C220055B43A /* Main.storyboard */,
 				B8ECAD721FD24C220055B43A /* Assets.xcassets */,
 				B8ECAD741FD24C220055B43A /* LaunchScreen.storyboard */,
@@ -154,6 +169,32 @@
 				B8ECAD9D1FD24CBF0055B43A /* FBSDKLoginKit.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8ECADB31FD393150055B43A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B8ECAD6C1FD24C220055B43A /* CBLoginViewController.h */,
+				B8ECAD6D1FD24C220055B43A /* CBLoginViewController.m */,
+				B8ECADAD1FD390140055B43A /* CBAddRecipeViewController.h */,
+				B8ECADAE1FD390140055B43A /* CBAddRecipeViewController.m */,
+				B8ECADAA1FD385710055B43A /* CBTabBarController.h */,
+				B8ECADAB1FD385710055B43A /* CBTabBarController.m */,
+				B8ECADB01FD391540055B43A /* CBTableViewController.h */,
+				B8ECADB11FD391540055B43A /* CBTableViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B8ECADB41FD3974E0055B43A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B8ECADB51FD3978C0055B43A /* CBRecipe.h */,
+				B8ECADB61FD3978C0055B43A /* CBRecipe.m */,
+				B8ECADB81FD397A00055B43A /* CBRecipeModel.h */,
+				B8ECADB91FD397A00055B43A /* CBRecipeModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,8 +330,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8ECADBA1FD397A00055B43A /* CBRecipeModel.m in Sources */,
+				B8ECADAF1FD390140055B43A /* CBAddRecipeViewController.m in Sources */,
+				B8ECADAC1FD385710055B43A /* CBTabBarController.m in Sources */,
+				B8ECADB21FD391540055B43A /* CBTableViewController.m in Sources */,
 				B8ECAD6E1FD24C220055B43A /* CBLoginViewController.m in Sources */,
 				B8ECAD791FD24C220055B43A /* main.m in Sources */,
+				B8ECADB71FD3978C0055B43A /* CBRecipe.m in Sources */,
 				B8ECAD6B1FD24C220055B43A /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,8 +501,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5UW4LLGN5Y;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK";
 				INFOPLIST_FILE = "$(SRCROOT)/CookBook/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoxidai.CookBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -469,8 +518,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5UW4LLGN5Y;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK";
 				INFOPLIST_FILE = "$(SRCROOT)/CookBook/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoxidai.CookBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
