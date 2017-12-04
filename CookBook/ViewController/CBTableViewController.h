@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
-@interface CBTableViewController : UITableViewController
+@interface CBTableViewController : UITableViewController <FBSDKSharingDelegate>
 
 @end

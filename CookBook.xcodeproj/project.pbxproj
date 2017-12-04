@@ -22,6 +22,7 @@
 		B8ECADB71FD3978C0055B43A /* CBRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADB61FD3978C0055B43A /* CBRecipe.m */; };
 		B8ECADBA1FD397A00055B43A /* CBRecipeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADB91FD397A00055B43A /* CBRecipeModel.m */; };
 		B8ECADBD1FD4AF830055B43A /* CBProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECADBC1FD4AF830055B43A /* CBProfileViewController.m */; };
+		B8ECADBF1FD51C3E0055B43A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8ECADBE1FD51C3E0055B43A /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		B8ECADB91FD397A00055B43A /* CBRecipeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBRecipeModel.m; sourceTree = "<group>"; };
 		B8ECADBB1FD4AF830055B43A /* CBProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBProfileViewController.h; sourceTree = "<group>"; };
 		B8ECADBC1FD4AF830055B43A /* CBProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBProfileViewController.m; sourceTree = "<group>"; };
+		B8ECADBE1FD51C3E0055B43A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			files = (
 				B8ECAD9F1FD24CBF0055B43A /* FBSDKLoginKit.framework in Frameworks */,
 				B8ECADA01FD24CBF0055B43A /* FBSDKCoreKit.framework in Frameworks */,
+				B8ECADBF1FD51C3E0055B43A /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +168,7 @@
 		B8ECAD9C1FD24C9E0055B43A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8ECADBE1FD51C3E0055B43A /* FBSDKShareKit.framework */,
 				B8ECAD9E1FD24CBF0055B43A /* FBSDKCoreKit.framework */,
 				B8ECAD9D1FD24CBF0055B43A /* FBSDKLoginKit.framework */,
 			);
