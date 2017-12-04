@@ -28,52 +28,6 @@ NSIndexPath *lastIndexPath;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.recipeModel = [CBRecipeModel sharedModel];
-    
-    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc]
-                                         initWithTarget:self action:@selector(tappedOnce:)];
-    [self.tableView addGestureRecognizer:singleTap];
-    
-    UITapGestureRecognizer* doubleTap = [[UITapGestureRecognizer alloc]
-                                         initWithTarget:self
-                                         action:@selector(tappedTwice:)];
-    doubleTap.numberOfTapsRequired = 2;
-    [self.tableView addGestureRecognizer:doubleTap];
-    [singleTap requireGestureRecognizerToFail:doubleTap];
-}
-
-- (void) tappedOnce: (UITapGestureRecognizer *) recognizer {
-    if (UIGestureRecognizerStateEnded == recognizer.state)
-    {
-        CGPoint p = [recognizer locationInView:recognizer.view];
-        NSIndexPath* indexPath = [self.tableView indexPathForRowAtPoint:p];
-        self.row = indexPath.row;
-        // Do your stuff
-        [self performSegueWithIdentifier:@"ShowDetail" sender:self.tableView];
-    }
-}
-
-- (void) tappedTwice: (UITapGestureRecognizer *) recognizer {
-    if (UIGestureRecognizerStateEnded == recognizer.state)
-    {
-        CGPoint p = [recognizer locationInView:recognizer.view];
-        NSIndexPath* indexPath = [self.tableView indexPathForRowAtPoint:p];
-        self.row = indexPath.row;
-        // Do your stuff
-        // Assuming you have a UIImage reference
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = paths[0];
-        CBRecipe *selectedRecipe = [self.recipeModel recipeAtIndex:self.row];
-        NSString *helper = [[NSString alloc] initWithFormat:@"%@", selectedRecipe.image];
-        NSString *filepath = [documentsDirectory stringByAppendingPathComponent:helper];
-        //NSLog(@"%@", self.imageText);
-        UIImage* tempImage = [UIImage imageWithContentsOfFile:filepath];
-        
-        FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
-        content.photos = @[[FBSDKSharePhoto photoWithImage:tempImage userGenerated:YES] ];
-        
-        // Assuming self implements <FBSDKSharingDelegate>
-        [FBSDKShareAPI shareWithContent:content delegate:self];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,12 +76,12 @@ NSIndexPath *lastIndexPath;
     }   
 }
 
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.row = indexPath.row;
     [self performSegueWithIdentifier:@"ShowDetail" sender:tableView];
-}*/
+}
 
 /*
 // Override to support rearranging the table view.

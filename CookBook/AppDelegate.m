@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [FBSDKLoginButton class];
+    [FBSDKShareButton class];
     [FBSDKProfilePictureView class];
     [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     [[FBSDKApplicationDelegate sharedInstance] application:application

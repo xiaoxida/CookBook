@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B88D37081FD5339B00DB8CE4 /* CBCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D37071FD5339B00DB8CE4 /* CBCollectionViewController.m */; };
+		B88D370B1FD54A2900DB8CE4 /* CBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D370A1FD54A2900DB8CE4 /* CBCollectionViewCell.m */; };
+		B88D370E1FD5613800DB8CE4 /* CBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D370D1FD5613800DB8CE4 /* CBWebViewController.m */; };
 		B8ECAD6B1FD24C220055B43A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECAD6A1FD24C220055B43A /* AppDelegate.m */; };
 		B8ECAD6E1FD24C220055B43A /* CBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECAD6D1FD24C220055B43A /* CBLoginViewController.m */; };
 		B8ECAD711FD24C220055B43A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8ECAD6F1FD24C220055B43A /* Main.storyboard */; };
@@ -43,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B88D37061FD5339B00DB8CE4 /* CBCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBCollectionViewController.h; sourceTree = "<group>"; };
+		B88D37071FD5339B00DB8CE4 /* CBCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBCollectionViewController.m; sourceTree = "<group>"; };
+		B88D37091FD54A2900DB8CE4 /* CBCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBCollectionViewCell.h; sourceTree = "<group>"; };
+		B88D370A1FD54A2900DB8CE4 /* CBCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBCollectionViewCell.m; sourceTree = "<group>"; };
+		B88D370C1FD5613800DB8CE4 /* CBWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBWebViewController.h; sourceTree = "<group>"; };
+		B88D370D1FD5613800DB8CE4 /* CBWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBWebViewController.m; sourceTree = "<group>"; };
 		B8ECAD661FD24C220055B43A /* CookBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8ECAD691FD24C220055B43A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B8ECAD6A1FD24C220055B43A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -186,6 +195,12 @@
 				B8ECADB11FD391540055B43A /* CBTableViewController.m */,
 				B8ECADBB1FD4AF830055B43A /* CBProfileViewController.h */,
 				B8ECADBC1FD4AF830055B43A /* CBProfileViewController.m */,
+				B88D37061FD5339B00DB8CE4 /* CBCollectionViewController.h */,
+				B88D37071FD5339B00DB8CE4 /* CBCollectionViewController.m */,
+				B88D37091FD54A2900DB8CE4 /* CBCollectionViewCell.h */,
+				B88D370A1FD54A2900DB8CE4 /* CBCollectionViewCell.m */,
+				B88D370C1FD5613800DB8CE4 /* CBWebViewController.h */,
+				B88D370D1FD5613800DB8CE4 /* CBWebViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -334,10 +349,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B88D37081FD5339B00DB8CE4 /* CBCollectionViewController.m in Sources */,
 				B8ECADBA1FD397A00055B43A /* CBRecipeModel.m in Sources */,
 				B8ECADBD1FD4AF830055B43A /* CBProfileViewController.m in Sources */,
 				B8ECADAF1FD390140055B43A /* CBAddRecipeViewController.m in Sources */,
 				B8ECADB21FD391540055B43A /* CBTableViewController.m in Sources */,
+				B88D370B1FD54A2900DB8CE4 /* CBCollectionViewCell.m in Sources */,
+				B88D370E1FD5613800DB8CE4 /* CBWebViewController.m in Sources */,
 				B8ECAD6E1FD24C220055B43A /* CBLoginViewController.m in Sources */,
 				B8ECAD791FD24C220055B43A /* main.m in Sources */,
 				B8ECADB71FD3978C0055B43A /* CBRecipe.m in Sources */,

@@ -7,8 +7,10 @@
 //
 
 #import "CBAddRecipeViewController.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @interface CBAddRecipeViewController () <UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate>
+@property (weak, nonatomic) IBOutlet FBSDKShareButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -29,18 +31,31 @@
         //set up the image
         if(![self.imageText isEqualToString:@"noimage"])
         {
+            self.shareButton.hidden = NO;
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = paths[0];
             NSString *helper = [[NSString alloc] initWithFormat:@"%@", self.imageText];
             self.filepath = [documentsDirectory stringByAppendingPathComponent:helper];
             NSLog(@"%@", self.imageText);
-            
             UIImage* tempImage = [UIImage imageWithContentsOfFile:self.filepath];
+            
+            FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+            photo.caption = self.titleTextField.text;
+            photo.image = tempImage;
+            photo.userGenerated = YES;
+            FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+            content.photos = @[photo];
+            self.shareButton.shareContent = content;
+            
             UIGraphicsBeginImageContext(tempImage.size);
             [tempImage drawInRect:CGRectMake(0, 0, tempImage.size.width, tempImage.size.height)];
             self.image = [UIImage imageWithCGImage:[UIGraphicsGetImageFromCurrentImageContext() CGImage]];
             [self.imageView setImage:self.image];
             UIGraphicsEndImageContext();
+        }
+        else
+        {
+            self.shareButton.hidden = YES;
         }
     }
     self.saveButton.enabled = NO;
@@ -49,6 +64,8 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)shareButtonPressed:(FBSDKShareButton *)sender {
 }
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     // Create path.
@@ -152,7 +169,21 @@
 // Enabled the save button when data is in all 3 textfields
 - (void) enableSaveButtonForInput1: (NSString *) tf1
                             Input2: (NSString *) tf2{
-    self.saveButton.enabled = (tf1.length > 0 && tf2.length > 0);
+    self.saveButton.enabled = (tf1.length > 0 && tf2.length > 0 && self.image);
+    if(tf1.length > 0 && tf2.length > 0)
+    {
+        FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+        photo.caption = self.titleTextField.text;
+        photo.image = self.image;
+        photo.userGenerated = YES;
+        FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+        content.photos = @[photo];
+        self.shareButton.shareContent = content;
+    }
+    else
+    {
+        self.shareButton.shareContent = nil;
+    }
 }
 
 /*
@@ -182,6 +213,21 @@
         self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
     [self.imageView setImage:self.image];
+    if(self.titleTextField.text.length > 0 && self.contentTextView.text.length > 0)
+    {
+        self.saveButton.enabled = true;
+        FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+        photo.caption = self.titleTextField.text;
+        photo.image = self.image;
+        photo.userGenerated = YES;
+        FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+        content.photos = @[photo];
+        self.shareButton.shareContent = content;
+    }
+    else
+    {
+        self.shareButton.shareContent = nil;
+    }
     UIGraphicsEndImageContext();
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

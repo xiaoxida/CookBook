@@ -9,6 +9,7 @@
 #import "CBProfileViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @interface CBProfileViewController ()
 @property (weak, nonatomic) IBOutlet FBSDKProfilePictureView *profilePictureView;
@@ -22,6 +23,7 @@
 @end
 
 @implementation CBProfileViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,8 +49,8 @@
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
              {
-                 NSLog(@"User total friends : %@",[result valueForKey:@"friends"]);
-                 NSLog(@"User total friends : %lu", [[[result valueForKey:@"feed"]objectForKey:@"data"] count]);
+                 //NSLog(@"User total friends : %@",[result valueForKey:@"feed"]);
+                 //NSLog(@"User total friends : %lu", [[[result valueForKey:@"feed"]objectForKey:@"data"] count]);
                  self.friendsLabel.text = [NSString stringWithFormat:@"%@ friends", [[[result valueForKey:@"friends"]objectForKey:@"summary"]valueForKey:@"total_count"]];
                  self.postsLabel.text = [NSString stringWithFormat:@"%lu posts", [[[result valueForKey:@"feed"]objectForKey:@"data"] count]];
              }
@@ -84,4 +86,6 @@
 }
 */
 
+- (IBAction)shareButton:(FBSDKShareButton *)sender {
+}
 @end
