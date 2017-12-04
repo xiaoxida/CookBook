@@ -27,27 +27,22 @@
         self.titleTextField.text = self.titleText;
         self.contentTextView.text = self.contentText;
         //set up the image
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        
-        NSString *documentsDirectory = paths[0];
-        NSString *helper = [[NSString alloc] initWithFormat:@"%@", self.imageText];
-        self.filepath = [documentsDirectory stringByAppendingPathComponent:helper];
-        NSLog(@"%@", self.imageText);
-        
-        UIImage* tempImage = [UIImage imageWithContentsOfFile:self.filepath];
-        UIGraphicsBeginImageContext(tempImage.size);
-        [tempImage drawInRect:CGRectMake(0, 0, tempImage.size.width, tempImage.size.height)];
-        self.image = [UIImage imageWithCGImage:[UIGraphicsGetImageFromCurrentImageContext() CGImage]];
-        [self.imageView setImage:self.image];
-        UIGraphicsEndImageContext();
+        if(![self.imageText isEqualToString:@"noimage"])
+        {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = paths[0];
+            NSString *helper = [[NSString alloc] initWithFormat:@"%@", self.imageText];
+            self.filepath = [documentsDirectory stringByAppendingPathComponent:helper];
+            NSLog(@"%@", self.imageText);
+            
+            UIImage* tempImage = [UIImage imageWithContentsOfFile:self.filepath];
+            UIGraphicsBeginImageContext(tempImage.size);
+            [tempImage drawInRect:CGRectMake(0, 0, tempImage.size.width, tempImage.size.height)];
+            self.image = [UIImage imageWithCGImage:[UIGraphicsGetImageFromCurrentImageContext() CGImage]];
+            [self.imageView setImage:self.image];
+            UIGraphicsEndImageContext();
+        }
     }
-    // Do any additional setup after loading the view.
-//        NSLog(@"%@", self.imageText);
-//        UIImage *tempImage = [UIImage imageWithContentsOfFile:self.imageText];
-//        UIGraphicsBeginImageContext(tempImage.size);
-//        [tempImage drawInRect:CGRectMake(0, 0, tempImage.size.width, tempImage.size.height)];
-//        self.image = [UIImage imageWithCGImage:[UIGraphicsGetImageFromCurrentImageContext() CGImage]];
-//        [self.imageView setImage:self.image];
     self.saveButton.enabled = NO;
 }
 
@@ -57,11 +52,19 @@
 }
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     // Create path.
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *fileName = [NSString stringWithFormat: @"%@.png", self.titleTextField.text];
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
-    // Save image.
-    [UIImagePNGRepresentation(self.image) writeToFile:filePath atomically:YES];
+    NSString *fileName;
+    if(self.image)
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        fileName = [NSString stringWithFormat: @"%@.png", self.titleTextField.text];
+        NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+        // Save image.
+        [UIImagePNGRepresentation(self.image) writeToFile:filePath atomically:YES];
+    }
+    else
+    {
+        fileName = @"noimage";
+    }
     if (self.addRecipe) {
         self.addRecipe(self.titleTextField.text, self.contentTextView.text, fileName);
     }

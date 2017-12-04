@@ -18,10 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [FBSDKLoginButton class];
+    [FBSDKProfilePictureView class];
+    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-    [FBSDKLoginButton class];
-    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     return YES;
 }
 
