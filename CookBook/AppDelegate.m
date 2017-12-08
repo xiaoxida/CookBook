@@ -1,7 +1,7 @@
 //
 //  AppDelegate.m
 //  CookBook
-//
+//Email: xiaoxida@usc.edu
 //  Created by Xiaoxi Dai on 12/1/17.
 //  Copyright © 2017 Xiaoxi Dai. All rights reserved.
 //
@@ -19,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //The following codes allow developer to customize loginbutton...
     [FBSDKLoginButton class];
     [FBSDKShareButton class];
     [FBSDKProfilePictureView class];
@@ -28,26 +29,14 @@
     return YES;
 }
 
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-//
-//    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                                                  openURL:url
-//                                                        sourceApplication:sourceApplication
-//                                                               annotation:annotation
-//                    ];
-//    // Add any custom logic here.
-//    return handled;
-//}
-
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
     BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                                   openURL:url
-                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+                                sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
                     ];
     // Add any custom logic here.
     return handled;

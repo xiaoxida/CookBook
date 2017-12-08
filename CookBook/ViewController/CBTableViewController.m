@@ -1,7 +1,7 @@
 //
 //  CBTableViewController.m
 //  CookBook
-//
+//Email: xiaoxida@usc.edu
 //  Created by Xiaoxi Dai on 12/2/17.
 //  Copyright © 2017 Xiaoxi Dai. All rights reserved.
 //
@@ -76,7 +76,7 @@ NSIndexPath *lastIndexPath;
     }   
 }
 
-
+//go to cbaddviewcontroller when tap on a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.row = indexPath.row;
@@ -106,6 +106,7 @@ NSIndexPath *lastIndexPath;
     // Pass the selected object to the new view controller.
     
     CBAddRecipeViewController *addRecipe = [segue destinationViewController];
+    //set up the inital compeletion block if we try to edit an existing recipe
     if ([segue.identifier isEqualToString:@"ShowDetail"]) {
         CBRecipe *recipe = [self.recipeModel recipeAtIndex: self.row];
         addRecipe.titleText = recipe.title;

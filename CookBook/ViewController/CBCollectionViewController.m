@@ -1,7 +1,7 @@
 //
 //  CBCollectionViewController.m
 //  CookBook
-//
+//Email: xiaoxida@usc.edu
 //  Created by Xiaoxi Dai on 12/3/17.
 //  Copyright © 2017 Xiaoxi Dai. All rights reserved.
 //
@@ -24,25 +24,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.popularModel = [CBPopularModel sharedModel];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.collectionView reloadData];
-    });
-    NSLog(@"%lu", [self.popularModel numberOfPopulars]);
-    /*
-    self.popularRecipes = [[NSMutableDictionary alloc] init];
-    FBSDKGraphRequest *requestMe = [[FBSDKGraphRequest alloc]
-                                    initWithGraphPath:@"286033133315/photos" parameters:@{@"fields": @"source"}];
-    FBSDKGraphRequestConnection *connection = [[FBSDKGraphRequestConnection alloc] init];
-    [connection addRequest:requestMe
-         completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-             self.popularRecipes = result;
-             [self.collectionView reloadData];
-             //NSLog(@"%@", result);
-             //NSLog(@"%@", [result objectForKey:@"data"]);
-             //NSLog(@"%@", [[[result objectForKey:@"photos"] valueForKey:@"data"] objectAtIndex:0]);
-         }];
-    [connection start];*/
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -68,8 +49,10 @@ static NSString * const reuseIdentifier = @"Cell";
     //Get selected item
     NSArray *selectedItems = [self.collectionView indexPathsForSelectedItems];
     NSIndexPath *ip = selectedItems[0];
-    //NSString *recipe = [[[self.popularRecipes objectForKey:@"data"]valueForKey:@"id"] objectAtIndex:ip.item];
+    
+    //get selected recipe
     NSDictionary *tempRecipe = [self.popularModel getPopularAtIndex:ip.item];
+    //get the id of this image
     NSString *recipe = [tempRecipe valueForKey:@"id"];
     
     // Get the new view controller using [segue destinationViewController].
@@ -78,10 +61,12 @@ static NSString * const reuseIdentifier = @"Cell";
     wvc.websiteString = [NSString stringWithFormat:@"https://www.facebook.com/%@",recipe];
 }
 - (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender {
+    //if user did not log in
     if (![FBSDKAccessToken currentAccessToken])
     {
         return;
     }
+    //reload the photos from 286033133315/photos
     FBSDKGraphRequest *requestMe = [[FBSDKGraphRequest alloc]
                                     initWithGraphPath:@"286033133315/photos" parameters:@{@"fields": @"source"}];
     FBSDKGraphRequestConnection *connection = [[FBSDKGraphRequestConnection alloc] init];
@@ -105,18 +90,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //return [[[self.popularRecipes objectForKey:@"data"] valueForKey:@"picture"] count];
-    //return 12;
     return [self.popularModel numberOfPopulars];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CBCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     // Configure the cell
-    //NSLog(@"%@", self.popularRecipes);
     NSDictionary *recipe = [self.popularModel getPopularAtIndex:indexPath.item];
     NSString *imageUrl = [recipe objectForKey:@"source"];
-   //NSString *recipe = [[[self.popularRecipes objectForKey:@"data"]valueForKey:@"picture"] objectAtIndex:indexPath.item];
     [cell setupCell:imageUrl];
     return cell;
 }

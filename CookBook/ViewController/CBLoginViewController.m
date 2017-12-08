@@ -1,7 +1,7 @@
 //
 //  ViewController.m
 //  CookBook
-//
+//Email: xiaoxida@usc.edu
 //  Created by Xiaoxi Dai on 12/1/17.
 //  Copyright © 2017 Xiaoxi Dai. All rights reserved.
 //
@@ -17,8 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //help change the title
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observeProfileChange:) name:FBSDKProfileDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observeTokenChange:) name:FBSDKAccessTokenDidChangeNotification object:nil];
+    //ask for permission
     self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends", @"user_posts",@"user_photos"];
     self.loginButton.publishPermissions = @[@"publish_actions"];
     self.loginButton.loginBehavior = FBSDKLoginBehaviorWeb;
@@ -30,13 +32,6 @@
     {
         [self observeTokenChange:nil];
     }
-    // Do any additional setup after loading the view, typically from a nib.
-//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-//    loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-//    // Optional: Place the button in the center of your view.
-//    loginButton.center = self.view.center;
-//    [self.view addSubview:loginButton];
-    
 }
 
 - (void)didReceiveMemoryWarning {

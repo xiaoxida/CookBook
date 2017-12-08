@@ -1,7 +1,7 @@
 //
 //  CBAddRecipeViewController.m
 //  CookBook
-//
+//Email: xiaoxida@usc.edu
 //  Created by Xiaoxi Dai on 12/2/17.
 //  Copyright © 2017 Xiaoxi Dai. All rights reserved.
 //
@@ -24,20 +24,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //if we have all information
     if(self.titleText && self.contentText && self.imageText)
     {
         self.titleTextField.text = self.titleText;
         self.contentTextView.text = self.contentText;
-        //set up the image
+        //if we have a image
         if(![self.imageText isEqualToString:@"noimage"])
         {
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = paths[0];
             NSString *helper = [[NSString alloc] initWithFormat:@"%@", self.imageText];
+            //get the file path of the image
             self.filepath = [documentsDirectory stringByAppendingPathComponent:helper];
             NSLog(@"%@", self.imageText);
+            //convert to UIImage
             UIImage* tempImage = [UIImage imageWithContentsOfFile:self.filepath];
             
+            //prepare for share photo
             FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
             photo.caption = self.titleTextField.text;
             photo.image = tempImage;
@@ -46,6 +50,7 @@
             content.photos = @[photo];
             self.shareButton.shareContent = content;
             
+            //display the image
             UIGraphicsBeginImageContext(tempImage.size);
             [tempImage drawInRect:CGRectMake(0, 0, tempImage.size.width, tempImage.size.height)];
             self.image = [UIImage imageWithCGImage:[UIGraphicsGetImageFromCurrentImageContext() CGImage]];
@@ -64,7 +69,7 @@
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     // Create path.
     NSString *fileName;
-    if(self.image)
+    if(self.image)  //if we have select an image, save it
     {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         fileName = [NSString stringWithFormat: @"%@.png", self.titleTextField.text];
@@ -76,6 +81,7 @@
     {
         fileName = @"noimage";
     }
+    //set up the compeletion block
     if (self.addRecipe) {
         self.addRecipe(self.titleTextField.text, self.contentTextView.text, fileName);
     }
@@ -91,6 +97,7 @@
 }
 
 - (IBAction)selectImageButtonPressed:(UIButton *)sender {
+    //set up an action sheet provide:"take photo" and "choose existing photos"
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIAlertAction *takePhotoAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
@@ -103,7 +110,7 @@
         [alertController addAction:takePhotoAction];
     }
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-        UIAlertAction *chooseExistingAction = [UIAlertAction actionWithTitle:@"Choose Existing" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
+        UIAlertAction *chooseExistingAction = [UIAlertAction actionWithTitle:@"Choose Existing Photos" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
             self.picker = [[UIImagePickerController alloc] init];
             self.picker.delegate = self;
             self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -111,6 +118,7 @@
         }];
         [alertController addAction:chooseExistingAction];
     }
+    //if user did not choose a photo or take a photo
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:NULL];
         [alertController addAction:cancelAction];
@@ -119,6 +127,7 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 #pragma mark - textfield and textview delegate methods
+//properly dismiss the keyboard when the user touch the background or hit the return button
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
@@ -160,10 +169,11 @@
     return YES;
 }
 
-// Enabled the save button when data is in all 3 textfields
+// Enabled the save button when data is in all textfields
 - (void) enableSaveButtonForInput1: (NSString *) tf1
                             Input2: (NSString *) tf2{
     self.saveButton.enabled = (tf1.length > 0 && tf2.length > 0 && self.image);
+    //prepare for sharing if  both textfield is not empty
     if(tf1.length > 0 && tf2.length > 0)
     {
         FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
@@ -192,6 +202,7 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 
+//process the result of taking photo or choose a photo
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary*)info
 {
     //if you take a new photo
@@ -207,6 +218,7 @@
         self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
     [self.imageView setImage:self.image];
+    //prepare for sharing
     if(self.titleTextField.text.length > 0 && self.contentTextView.text.length > 0)
     {
         self.saveButton.enabled = true;

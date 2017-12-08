@@ -1,7 +1,7 @@
 //
 //  CBProfileViewController.m
 //  CookBook
-//
+//Email: xiaoxida@usc.edu
 //  Created by Xiaoxi Dai on 12/3/17.
 //  Copyright © 2017 Xiaoxi Dai. All rights reserved.
 //
@@ -28,7 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //set up the profile picture
     self.profilePictureView.profileID = @"me";
+    //tap titleLabel go to user's facebook page
     [self.titleLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapLink:)]];
     [self updateContent:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -39,18 +41,18 @@
 
 - (void) updateContent:(NSNotification *)notification
 {
+    //if the user logged in
     if ([FBSDKAccessToken currentAccessToken]) {
         self.titleLabel.hidden = NO;
         self.friendsLabel.hidden = NO;
         self.postsLabel.hidden = NO;
         self.titleLabel.text = [FBSDKProfile currentProfile].name;
         self.myUrl = [FBSDKProfile currentProfile].linkURL.absoluteString;
+        //set up friends label and postslabel
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"friends,feed"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
              {
-                 //NSLog(@"User total friends : %@",[result valueForKey:@"feed"]);
-                 //NSLog(@"User total friends : %lu", [[[result valueForKey:@"feed"]objectForKey:@"data"] count]);
                  self.friendsLabel.text = [NSString stringWithFormat:@"%@ friends", [[[result valueForKey:@"friends"]objectForKey:@"summary"]valueForKey:@"total_count"]];
                  self.postsLabel.text = [NSString stringWithFormat:@"%lu posts", [[[result valueForKey:@"feed"]objectForKey:@"data"] count]];
              }
@@ -63,6 +65,7 @@
     }
 }
 
+//tap the titlelabel go to user's facebook mainpage
 - (void)tapLink:(UITapGestureRecognizer *)gesture
 {
     if ([FBSDKAccessToken currentAccessToken]) {

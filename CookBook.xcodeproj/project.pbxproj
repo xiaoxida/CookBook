@@ -146,7 +146,6 @@
 				B8ECADB31FD393150055B43A /* ViewController */,
 				B8ECAD6F1FD24C220055B43A /* Main.storyboard */,
 				B8ECAD721FD24C220055B43A /* Assets.xcassets */,
-				B8ECAD741FD24C220055B43A /* LaunchScreen.storyboard */,
 				B8ECAD9B1FD24C2D0055B43A /* Supporting Files */,
 				B8ECAD9C1FD24C9E0055B43A /* Frameworks */,
 			);
@@ -174,6 +173,7 @@
 		B8ECAD9B1FD24C2D0055B43A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B8ECAD741FD24C220055B43A /* LaunchScreen.storyboard */,
 				B8ECAD771FD24C220055B43A /* Info.plist */,
 				B8ECAD781FD24C220055B43A /* main.m */,
 			);

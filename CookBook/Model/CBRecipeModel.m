@@ -1,7 +1,7 @@
 //
 //  CBRecipeModel.m
 //  CookBook
-//
+//Email: xiaoxida@usc.edu
 //  Created by Xiaoxi Dai on 12/2/17.
 //  Copyright © 2017 Xiaoxi Dai. All rights reserved.
 //
@@ -31,11 +31,11 @@
         
         NSMutableArray *cards = [NSMutableArray arrayWithContentsOfFile:self.filepath];
         
-        if(!cards)
+        if(!cards)  //if we did not find the plist
         {
             _recipes = [[NSMutableArray alloc] init];
         }
-        else    //convert cards
+        else    //we find the plist
         {
             _recipes = [[NSMutableArray alloc] init];
             if([cards count] != 0)
@@ -104,6 +104,7 @@
     }
 }
 
+//save recipes to plist
 - (void) save {
     NSMutableArray *recipes = [[NSMutableArray alloc] init];
     
