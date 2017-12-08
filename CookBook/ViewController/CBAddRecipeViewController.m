@@ -31,7 +31,6 @@
         //set up the image
         if(![self.imageText isEqualToString:@"noimage"])
         {
-            self.shareButton.hidden = NO;
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = paths[0];
             NSString *helper = [[NSString alloc] initWithFormat:@"%@", self.imageText];
@@ -53,10 +52,6 @@
             [self.imageView setImage:self.image];
             UIGraphicsEndImageContext();
         }
-        else
-        {
-            self.shareButton.hidden = YES;
-        }
     }
     self.saveButton.enabled = NO;
 }
@@ -65,8 +60,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)shareButtonPressed:(FBSDKShareButton *)sender {
-}
+
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     // Create path.
     NSString *fileName;

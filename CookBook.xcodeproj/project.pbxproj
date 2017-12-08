@@ -10,6 +10,8 @@
 		B88D37081FD5339B00DB8CE4 /* CBCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D37071FD5339B00DB8CE4 /* CBCollectionViewController.m */; };
 		B88D370B1FD54A2900DB8CE4 /* CBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D370A1FD54A2900DB8CE4 /* CBCollectionViewCell.m */; };
 		B88D370E1FD5613800DB8CE4 /* CBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D370D1FD5613800DB8CE4 /* CBWebViewController.m */; };
+		B88D37161FD62D3D00DB8CE4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88D37151FD62D3D00DB8CE4 /* Bolts.framework */; };
+		B8AF7A371FDA4A33008D2550 /* CBPopularModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8AF7A361FDA4A33008D2550 /* CBPopularModel.m */; };
 		B8ECAD6B1FD24C220055B43A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECAD6A1FD24C220055B43A /* AppDelegate.m */; };
 		B8ECAD6E1FD24C220055B43A /* CBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ECAD6D1FD24C220055B43A /* CBLoginViewController.m */; };
 		B8ECAD711FD24C220055B43A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8ECAD6F1FD24C220055B43A /* Main.storyboard */; };
@@ -52,6 +54,9 @@
 		B88D370A1FD54A2900DB8CE4 /* CBCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBCollectionViewCell.m; sourceTree = "<group>"; };
 		B88D370C1FD5613800DB8CE4 /* CBWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBWebViewController.h; sourceTree = "<group>"; };
 		B88D370D1FD5613800DB8CE4 /* CBWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBWebViewController.m; sourceTree = "<group>"; };
+		B88D37151FD62D3D00DB8CE4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		B8AF7A351FDA4A33008D2550 /* CBPopularModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBPopularModel.h; sourceTree = "<group>"; };
+		B8AF7A361FDA4A33008D2550 /* CBPopularModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBPopularModel.m; sourceTree = "<group>"; };
 		B8ECAD661FD24C220055B43A /* CookBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8ECAD691FD24C220055B43A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B8ECAD6A1FD24C220055B43A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 				B8ECAD9F1FD24CBF0055B43A /* FBSDKLoginKit.framework in Frameworks */,
 				B8ECADA01FD24CBF0055B43A /* FBSDKCoreKit.framework in Frameworks */,
 				B8ECADBF1FD51C3E0055B43A /* FBSDKShareKit.framework in Frameworks */,
+				B88D37161FD62D3D00DB8CE4 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +183,7 @@
 		B8ECAD9C1FD24C9E0055B43A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B88D37151FD62D3D00DB8CE4 /* Bolts.framework */,
 				B8ECADBE1FD51C3E0055B43A /* FBSDKShareKit.framework */,
 				B8ECAD9E1FD24CBF0055B43A /* FBSDKCoreKit.framework */,
 				B8ECAD9D1FD24CBF0055B43A /* FBSDKLoginKit.framework */,
@@ -212,6 +219,8 @@
 				B8ECADB61FD3978C0055B43A /* CBRecipe.m */,
 				B8ECADB81FD397A00055B43A /* CBRecipeModel.h */,
 				B8ECADB91FD397A00055B43A /* CBRecipeModel.m */,
+				B8AF7A351FDA4A33008D2550 /* CBPopularModel.h */,
+				B8AF7A361FDA4A33008D2550 /* CBPopularModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,6 +362,7 @@
 				B8ECADBA1FD397A00055B43A /* CBRecipeModel.m in Sources */,
 				B8ECADBD1FD4AF830055B43A /* CBProfileViewController.m in Sources */,
 				B8ECADAF1FD390140055B43A /* CBAddRecipeViewController.m in Sources */,
+				B8AF7A371FDA4A33008D2550 /* CBPopularModel.m in Sources */,
 				B8ECADB21FD391540055B43A /* CBTableViewController.m in Sources */,
 				B88D370B1FD54A2900DB8CE4 /* CBCollectionViewCell.m in Sources */,
 				B88D370E1FD5613800DB8CE4 /* CBWebViewController.m in Sources */,

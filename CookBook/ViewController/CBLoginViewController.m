@@ -7,9 +7,10 @@
 //
 
 #import "CBLoginViewController.h"
+#import "CBPopularModel.h"
 
 @interface CBLoginViewController ()
-
+@property (strong, nonatomic) CBPopularModel *popularModel;
 @end
 
 @implementation CBLoginViewController
@@ -49,6 +50,7 @@
     if ([FBSDKProfile currentProfile]) {
         NSString *title = [NSString stringWithFormat:@"Continue as %@", [FBSDKProfile currentProfile].name];
         [self.continueButton setTitle:title forState:UIControlStateNormal];
+        self.popularModel = [CBPopularModel sharedModel];
     }
 }
 

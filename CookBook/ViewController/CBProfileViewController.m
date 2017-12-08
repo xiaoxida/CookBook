@@ -33,7 +33,7 @@
     [self updateContent:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateContent:)
-                                                 name:FBSDKProfileDidChangeNotification
+                                                 name:FBSDKAccessTokenDidChangeNotification
                                                object:nil];
 }
 
@@ -85,7 +85,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)shareButton:(FBSDKShareButton *)sender {
-}
 @end

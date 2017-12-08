@@ -15,7 +15,6 @@
 
 @implementation CBCollectionViewCell
 - (void) setupCell: (NSString *) cell {
-    //self.cellLabel.text = cell;
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell]];
     self.imageView.image = [UIImage imageWithData: imageData];
 }
