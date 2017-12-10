@@ -37,8 +37,18 @@
                                              selector:@selector(updateContent:)
                                                  name:FBSDKAccessTokenDidChangeNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observeProfileChange:) name:FBSDKProfileDidChangeNotification object:nil];
 }
 
+//we may get FBSDKProfile after FBSDKAccessToken is valid
+- (void)observeProfileChange:(NSNotification *)notfication {
+    if ([FBSDKProfile currentProfile]) {
+        self.titleLabel.text = [FBSDKProfile currentProfile].name;
+        self.myUrl = [FBSDKProfile currentProfile].linkURL.absoluteString;
+    }
+}
+
+//udpate label when user logged in
 - (void) updateContent:(NSNotification *)notification
 {
     //if the user logged in
@@ -47,6 +57,7 @@
         self.friendsLabel.hidden = NO;
         self.postsLabel.hidden = NO;
         self.titleLabel.text = [FBSDKProfile currentProfile].name;
+        //NSLog(@"%@",[FBSDKProfile currentProfile].name);
         self.myUrl = [FBSDKProfile currentProfile].linkURL.absoluteString;
         //set up friends label and postslabel
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"friends,feed"}]

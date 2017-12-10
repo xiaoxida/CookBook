@@ -99,6 +99,7 @@
 - (IBAction)selectImageButtonPressed:(UIButton *)sender {
     //set up an action sheet provide:"take photo" and "choose existing photos"
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    //check if the device have camera
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIAlertAction *takePhotoAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
             self.picker = [[UIImagePickerController alloc] init];
@@ -109,6 +110,7 @@
         }];
         [alertController addAction:takePhotoAction];
     }
+    //check if the device have photo library
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         UIAlertAction *chooseExistingAction = [UIAlertAction actionWithTitle:@"Choose Existing Photos" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
             self.picker = [[UIImagePickerController alloc] init];
